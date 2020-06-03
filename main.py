@@ -61,6 +61,10 @@ add = ['山外山', '青龍山']
 minus = []
 equal = ['青龍山外']
 
+# add = ['一二三', '三二一']
+# minus = []
+# equal = ['四四四']
+
 
 k = add.copy()
 k.extend(minus)
@@ -78,13 +82,15 @@ max_m0 = int(u_len * '9')
 for i in range(0, max_m0 + 1):
     # for i in range(0, 5):
     #     # print(i)
-    now_tag = list('{:0>4d}'.format(i))
+    s = '{:0>max_m0d}'.replace('max_m0',str(u_len))
+    now_tag = list(s.format(i))
     map_ed = renew_map(u_len, unknown, now_tag)
     add_ed = fm3294(add.copy(), map_ed)
     minus_ed = fm3294(minus.copy(), map_ed)
     equal_ed = fm3294(equal.copy(), map_ed)
     # 取代完成後開始排左右--------
     if compare(add_ed, minus_ed, equal_ed):
+        print('==============')
         print(f'add = {add_ed}')
         print(f'minus = {minus_ed}')
         print(f'equal = {equal_ed}')
